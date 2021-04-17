@@ -1,0 +1,72 @@
+body {
+  background: #f5f5f5 !important;
+  font-family: "PT Sans", sans-serif;
+  margin-bottom: 60px;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+a {
+  color: #0073bb;
+}
+.bg-theme{
+  background-color: #c69963;
+  color: #fff;
+}
+#commentItem {
+  background: #f7f7f7;
+}
+.bg-theme{
+  background-color: #c69963;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+.delBtn {
+  background: transparent;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* height: 60px; */
+  line-height: 60px;
+  background: transparent;
+}
+
+.navbar-brand {
+  font-size: 26px;
+  font-family: "Josefin Sans", sans-serif !important;
+  
+}
+
+.jumbotron {
+  background: linear-gradient(rgba(70, 70, 70, 0.35), rgba(70, 70, 70, 0.35)),
+    url(https://images.unsplash.com/photo-1530406472580-81dc39c4babe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=730&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  margin-bottom: 0px;
+}
+
+.jumbotronText {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+#tog1, #tog2,#tog3,#tog4,#tog5,#tog6,#tog9,#tog10{
+  padding-inline: 4rem;
+  background-color: #c69963 !important;
+}
+#tog1.active, #tog2.active, #tog3.active, #tog4.active, #tog9.active, #tog10.active{
+  padding-inline: 8rem;
+  background-color: #c69963 !important;
+  border-width: 0.2rem;
+}
+

@@ -1,0 +1,134 @@
+<% include ../partials/header %>
+
+  <div class="container mt-4">    
+    <div class="row">
+      <div class="col">
+      </div>
+      <div class="col-12 col-sm-12 col-lg-9">
+        <div class="card shadow border-0">          
+          <div class="card-body">
+            <h1 class="text-center">List Property</h1>
+            <p>
+              <small class="text-muted">Fields marked * are required.</small>
+            </p>
+            <form action="/properties" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+              
+              <div class="btn-group btn-group-toggle btn-lg" data-toggle="buttons">
+                <label id="tog1" class="btn btn-secondary active">
+                  <input type="radio" class="" name="campground[type]" value="Commercial" id="option1" autocomplete="off" checked> Commercial
+                </label>
+                <label id="tog2" class="btn btn-secondary">
+                  <input type="radio" class=" " name="campground[type]" value="Agriculture" id="option2" autocomplete="off"> Agriculture
+                </label>
+                <label id="tog3" class="btn btn-secondary">
+                  <input type="radio" class=" " name="campground[type]" value="Residential" id="option3" autocomplete="off"> Residential
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="">Title*</label>
+                <input type="text" class="form-control" name="campground[name]" placeholder="Title" required>
+                <div class="invalid-feedback">
+                  Please provide a title for your property.
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <label for="">Property Type*</label>
+                <input type="radio" class="form-control" name="campground[type]" value="Agriculture" required>
+                <input type="radio" class="form-control" name="campground[type]" value="Commercial"  required>
+                <div class="invalid-feedback">
+                  Please provide a type.
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label for="">Area*</label>
+                <input type="number" class="form-control" name="campground[area]" placeholder="Area (Sqrft)" min="1" step="1" required>
+                <div class="invalid-feedback">
+                  Please provide area.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Price*</label>
+                <input type="number" class="form-control" name="campground[price]" placeholder="Price" min="1" step="1" required>
+                <div class="invalid-feedback">
+                  Please provide a price.
+                </div>
+              </div>
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" name="image" accept="image/*" class="custom-file-input" id="image" aria-describedby="inputGroupFileAddon01"
+                    required>
+                  <div class="invalid-feedback">
+                    Please upload an image of your Property.
+                  </div>
+                  <label class="custom-file-label" for="inputGroupFile01">Image*</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description*</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="campground[description]" rows="3" required></textarea>
+                <div class="invalid-feedback">
+                  Please provide a description of your Property.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Road witdth in front of the property in feet</label>
+                <input type="number" class="form-control" name="campground[road]" placeholder="50 feet" min="5" step="1" required>
+                <div class="invalid-feedback">
+                  Please provide a valid figure.
+                </div>
+              </div>
+              <!-- <div class="form-group">
+                <label for="location">Location*</label>
+                <input type="text" class="form-control" name="campground[location]" placeholder="12/24, Karol Bagh" id="location" required>
+                <div class="invalid-feedback">
+                  Please provide a valid location
+                </div>
+              </div> -->
+              <div class="form-group">
+                <label for="">Phone Number*</label>
+                <input type="text" class="form-control" name="campground[phone]" placeholder="8946025648" required>
+                <div class="invalid-feedback">
+                  Please provide a phone number.
+                </div>
+              </div>
+              <label for="">Location*</label>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" name="campground[lat]" placeholder="latitude" required>
+                  <div class="invalid-feedback">
+                    Please provide valid co-ordinates.
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" name="campground[lng]" placeholder="longitude" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">Amenities separated by commas</label>
+                <input type="text" class="form-control" name="campground[tags]" placeholder="Example: electricity, borewell, furnished">
+              </div>
+
+              <div class="btn-group btn-group-toggle btn-lg" data-toggle="buttons">
+                <label id="tog3" class="btn btn-secondary active">
+                  <input type="radio" class="" name="campground[purpose]" value="Own" id="option3" autocomplete="off" checked> Sell
+                </label>
+                <label id="tog4" class="btn btn-secondary">
+                  <input type="radio" class=" " name="campground[purpose]" value="Rent" id="option4" autocomplete="off"> Rent
+                </label>
+              </div>
+              <button type="submit" class="btn bg-theme btn-block">Submit</button>
+            </form>
+            <a class="btn btn-link" href="/properties">Go Back</a>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="col">
+
+      </div>
+    </div>
+
+  </div>
+
+  <% include ../partials/footer %>

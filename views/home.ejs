@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet">
+        
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
+      <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"> -->
+      <link rel="shortcut icon" type="images/png" href="images/favicon.png">
+      <link rel="stylesheet" href="css/style.css">
+        <title>Realtor</title>
+    </head>
+    
+<body>
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-theme fontfull">
+        <div class="container">
+          <% if (!currentUser) { %>
+            <img src="images/favicon-white.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+            
+          <a class="navbar-brand fontfull" href="/">Realtor</a>
+          <% } else { %>
+            <img src="images/favicon-white.png" width="45" alt="" class="d-inline-block align-middle mr-2">
+            <a class="navbar-brand fontfull" href="/home">Realtor</a>
+          <% } %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li id="home" class="nav-item active">
+                <a class="nav-link" href="/home">Home</a>
+              </li>
+              <li id="Properties" class="nav-item">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    Properties
+                  </a>
+                  <div id="ddown1" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/Properties/Commercial">Commercial</a>
+                    <a class="dropdown-item" href="/Properties/Agriculture">Agriculture</a>
+                    <a class="dropdown-item" href="/Properties/Residential">Residential</a>
+                  </div>
+                </li>
+              </li>
+              <li id="about" class="nav-item">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li id="newCampground" class="nav-item">
+                <a class="nav-link" href="/properties/new">New</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <% if(!currentUser) { %>
+                <li id="login" class="nav-item">
+                  <a class="nav-link" href="/login?returnurl=home">Login</a>
+                </li>
+                <li id="register" class="nav-item">
+                  <a class="nav-link" href="/register">Sign Up</a>
+                </li>
+              <% } else { %>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-user"></i>
+                    <%= currentUser.username %>
+                  </a>
+                  <div id="ddown2" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/users/<%= currentUser._id %>">Profile</a>
+                    <a class="dropdown-item" href="/logout">Log Out</a>
+                  </div>
+                </li>
+              <% } %>
+            </ul>
+          </div>
+        </div>
+      </nav>    
+    
+      <div class="header">
+          <img src="images/Realtor.png" alt="Realtor logo" class="header__logo">
+        
+          <h1 class="heading-1">The ultimate personal freedom</h1>
+          <div class="header__seenon-text"></div>
+          
+          <a href="/properties/Commercial" class="btn header__btn fontfull">View our properties</a>
+      </div>
+    <div class="container2">
+      <section class="features">
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-global"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">World's best luxury homes</h4>
+            <p class="feature__text">We provide the best Luxurious home at your need, which you can we at anytime.</p>
+        </div>
+
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-trophy"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Only the best properties</h4>
+            <p class="feature__text">Only those property which have been verified are being posted on our page ensuring the best property for our clients.</p>
+        </div>
+
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">All homes in in top locations</h4>
+            <p class="feature__text">
+                All the property listed in Realtor are located at good location, thereby making major commodities available near you.
+                </p>
+        </div>
+
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-key"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">New home in one week</h4>
+            <p class="feature__text">We try to provide home to our clients as fast as possible, making the experience unmatched.</p>
+        </div>
+
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-presentation"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Top 1% realtors</h4>
+            <p class="feature__text">
+                Our dream is to be in 1% elite Realtors, hence we make each transaction count.</p>
+        </div>
+
+        <div class="feature">
+            <svg class="feature__icon">
+                <use xlink:href="img/sprite.svg#icon-lock"></use>
+            </svg>
+            <h4 class="heading-4 heading-4--dark">Secure payments on nexter</h4>
+            <p class="feature__text">
+                Payment made in our Realtor in 100% safe, and our protected with high encryptions.</p>
+        </div>
+    </section>
+
+    <div class="story__pictures">
+        <img src="img/story-1.jpg" alt="Couple with new house" class="story__img--1">
+        <img src="img/story-2.jpeg" alt="New house" class="story__img--2">
+    </div>
+
+    <div class="story__content">
+        <h3 class="heading-3 mb-sm">Happy Customers</h3>
+        <h2 class="heading-2 heading-2--dark mb-md">&ldquo;The best decision of our lives&rdquo;</h2>
+        <p class="story__text">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tenetur distinctio necessitatibus pariatur voluptatibus. Quidem consequatur harum volupta!
+        </p>
+        <a href="/Properties/Residential"><button class="btn">Find your own home</button></a>
+    </div> 
+    
+    <!-- <section class="homes">
+        <%//properties.forEach(function(property){ %>
+            <div class="home">
+                <img src="<%=//property.image %>" alt="<%= //property.description%>" class="home__img">
+                <svg class="home__like">
+                    <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+                </svg>
+                <h5 class="home__name"><%=//property.type %>:<%=//property.name %></h5>
+                <div class="home__location">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+                    </svg>
+                    <p>India</p>
+                </div>
+                <div class="home__rooms">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+                    </svg>
+                    <p><%=//property.purpose %></p>
+                </div>
+                <div class="home__area">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#icon-expand"></use>
+                    </svg>
+                    <p><%=//property.area %> ft<sup>2</sup></p>
+                </div>
+                <div class="home__price">
+                    <svg>
+                        <use xlink:href="img/sprite.svg#icon-key"></use>
+                    </svg>
+                    <p>₹ <%=//property.price %></p>
+                </div>
+                <a class="btn home__btn" href="properties/purpose/<%=//property._id%>">View Site</a>
+            </div>
+        <%//}); %> -->
+      
+      <!-- <div class="home">
+          <img src="https://res.cloudinary.com/dj43fftia/image/upload/v1612514167/pbccjqctv66fh9rftyjo.jpg" alt="Maidan" class="home__img">
+          <svg class="home__like">
+              <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+          </svg>
+          <h5 class="home__name">Agriculture: Khula Maidaan</h5>
+          <div class="home__location">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+              </svg>
+              <p>India</p>
+          </div>
+          <div class="home__rooms">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+              </svg>
+              <p>Open Space</p>
+          </div>
+          <div class="home__area">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-expand"></use>
+              </svg>
+              <p>4360 ft<sup>2</sup></p>
+          </div>
+          <div class="home__price">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+              </svg>
+              <p>₹ 953,820</p>
+          </div>
+          <a href="properties/purpose/601d0379df06bd27f40d1e52" class="btn home__btn">View Site</a>
+      </div>
+
+      <div class="home">
+          <img src="img/house-3.jpeg" alt="House 3" class="home__img">
+          <svg class="home__like">
+              <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+          </svg>
+          <h5 class="home__name">Agriculture: Flower Garden
+          </h5>
+          <div class="home__location">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+              </svg>
+              <p>India</p>
+          </div>
+          <div class="home__rooms">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+              </svg>
+              <p>Pre-Built Farm House</p>
+          </div>
+          <div class="home__area">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-expand"></use>
+              </svg>
+              <p>50000 ft<sup>2</sup></p>
+          </div>
+          <div class="home__price">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+              </svg>
+              <p>$ 5,050,000</p>
+          </div>
+          <a href="properties/purpose/601d6f6e3c6724326c12ddf0" class="btn home__btn">View Site</a>
+      </div>
+
+      <div class="home">
+          <img src="img/story-2.jpeg" alt="House 4" class="home__img">
+          <svg class="home__like">
+              <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+          </svg>
+          <h5 class="home__name">Residential: Sunsaan Villa
+          </h5>
+          <div class="home__location">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+              </svg>
+              <p>India</p>
+          </div>
+          <div class="home__rooms">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+              </svg>
+              <p>6 rooms</p>
+          </div>
+          <div class="home__area">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-expand"></use>
+              </svg>
+              <p>8356 ft<sup>2</sup></p>
+          </div>
+          <div class="home__price">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+              </svg>
+              <p>₹ 85,245,600</p>
+          </div>
+          <a href="properties/purpose/601c483cba36fd339853d196" class="btn home__btn">View Site</a >
+      </div>
+
+      <div class="home">
+          <img src="https://res.cloudinary.com/dj43fftia/image/upload/v1612496483/zyvc0fw4e4l8dj3owdjv.jpg" alt="House 5" class="home__img">
+          <svg class="home__like">
+              <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+          </svg>
+          <h5 class="home__name">Residential: Sunsaan Villa
+          </h5>
+          <div class="home__location">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+              </svg>
+              <p>India</p>
+          </div>
+          <div class="home__rooms">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+              </svg>
+              <p>8 rooms</p>
+          </div>
+          <div class="home__area">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-expand"></use>
+              </svg>
+              <p>4230 m<sup>2</sup></p>
+          </div>
+          <div class="home__price">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+              </svg>
+              <p>₹ 8,520,456</p>
+          </div>
+          <a href="properties/purpose/601cbe6694e43d13f8622566" class="btn home__btn">View Site</a >
+      </div>
+
+      <div class="home">
+          <img src="https://res.cloudinary.com/dj43fftia/image/upload/v1612518014/qkintu5v1au2nv79jf8t.jpg" alt="House 6" class="home__img">
+          <svg class="home__like">
+              <use xlink:href="img/sprite.svg#icon-heart-full"></use>
+          </svg>
+          <h5 class="home__name">Residential: Blue Vills
+          </h5>
+          <div class="home__location">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-map-pin"></use>
+              </svg>
+              <p>India</p>
+          </div>
+          <div class="home__rooms">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-profile-male"></use>
+              </svg>
+              <p>5 rooms</p>
+          </div>
+          <div class="home__area">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-expand"></use>
+              </svg>
+              <p>4500 sq<sup>2</sup></p>
+          </div>
+          <div class="home__price">
+              <svg>
+                  <use xlink:href="img/sprite.svg#icon-key"></use>
+              </svg>
+              <p>₹ 2,500,000</p>
+          </div>
+          <a href="properties/purpose/601d12805ee35d29ec603cf7" class="btn home__btn">View Site</a>
+      </div> -->
+  </section>
+
+
+
+    
+  <section class="gallery">
+    <figure class="gallery__item gallery__item--1"><img src="img/gal-1.jpeg" alt="Gallery image 1" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--2"><img src="img/gal-2.jpeg" alt="Gallery image 2" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--3"><img src="img/gal-3.jpeg" alt="Gallery image 3" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--4"><img src="img/gal-4.jpeg" alt="Gallery image 4" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--5"><img src="img/gal-5.jpeg" alt="Gallery image 5" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--6"><img src="img/gal-6.jpeg" alt="Gallery image 6" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--7"><img src="img/gal-7.jpeg" alt="Gallery image 7" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--8"><img src="img/gal-8.jpeg" alt="Gallery image 8" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--9"><img src="img/gal-9.jpeg" alt="Gallery image 9" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--10"><img src="img/gal-10.jpeg" alt="Gallery image 10" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--11"><img src="img/gal-11.jpeg" alt="Gallery image 11" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--12"><img src="img/gal-12.jpeg" alt="Gallery image 12" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--13"><img src="img/gal-13.jpeg" alt="Gallery image 13" class="gallery__img"></figure>
+    <figure class="gallery__item gallery__item--14"><img src="img/gal-14.jpeg" alt="Gallery image 14" class="gallery__img"></figure>
+
+
+</section>
+<footer class="footer">
+  <ul class="nav">
+          <li class="nav__item"><a href="Properties/Residential" class="nav__link">Find your dream home</a></li>
+          <li class="nav__item"><a href="about" class="nav__link">Request proposal</a></li>
+          <li class="nav__item"><a href="about" class="nav__link">Download home planner</a></li>
+          <li class="nav__item"><a href="about" class="nav__link">Contact us</a></li>
+          <li class="nav__item"><a href="properties/new" class="nav__link">Submit your property</a></li>
+          <li class="nav__item"><a href="about" class="nav__link">Come work with us!</a></li>
+  </ul>
+  <p class="copyright">
+      &copy; 2021 | Realtor.
+  </p>
+</footer>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+crossorigin="anonymous"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+// ScrollReveal().reveal('.jumbotron-text', { duration: 2000 });
+ScrollReveal().reveal('.indexCards', {
+  interval: 150, mobile: true, viewFactor: 0.3
+});
+</script>
+</body>

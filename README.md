@@ -1,0 +1,1 @@
+To get google maps working check [this](https://github.com/nax3t/google-maps-api) out.
